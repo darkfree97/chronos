@@ -41,6 +41,13 @@ void Backend::updateTask(int id, QString title, QString comments)
     emit this->tasksUpdated();
 }
 
+void Backend::deleteTask(int id)
+{
+    this->db->tasks()->deleteTask(id);
+    this->db->events()->deleteEvents(id);
+    emit this->tasksUpdated();
+}
+
 QList<Task *> Backend::loadTasks()
 {
     return this->db->tasks()->retrieveTasks();

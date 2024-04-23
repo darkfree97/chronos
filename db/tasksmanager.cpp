@@ -45,6 +45,18 @@ void TasksManager::updateTask(Task &task)
     queryCtx.finish();
 }
 
+void TasksManager::deleteTask(int id)
+{
+    QSqlQuery queryCtx(*this->db);
+    QString deleteQuery = "DELETE FROM tasks WHERE id='%1'";
+
+    if (!queryCtx.exec(deleteQuery.arg(id))) {
+        qDebug() << queryCtx.lastError();
+        QGuiApplication::quit();
+    }
+    queryCtx.finish();
+}
+
 QList<Task *> TasksManager::retrieveTasks()
 {
     // Clear previous tasks

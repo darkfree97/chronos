@@ -19,6 +19,7 @@ public:
     void startTimer(int taskId);
     void stopTimer(int taskId, int startId);
     Event *getLastEvent(bool cached = true);
+    void deleteEvents(int taskId);
 private:
     QSqlDatabase *db;
     Event *lastEvent;

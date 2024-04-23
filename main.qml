@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import Qt.labs.platform
 
-import io.qt.examples.backend
+import io.chronos.backend 1.0
 
 ApplicationWindow {
     id: window

@@ -38,7 +38,27 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     cursorShape: Qt.PointingHandCursor
-                    onClicked: selectedTask = modelData
+                    acceptedButtons: Qt.LeftButton | Qt.RightButton
+                    onClicked: (evt) => {
+                        if (evt.button === Qt.RightButton) {
+                            taskContextMenu.popup()
+                        } else {
+                            selectedTask = modelData
+                        }
+                    }
+                    onPressAndHold: {
+                        taskContextMenu.popup()
+                    }
+
+                    Menu {
+                        id: taskContextMenu
+                        MenuItem {
+                            text: "Delete"
+                            onClicked: {
+                                backend.deleteTask(modelData.id)
+                            }
+                        }
+                    }
                 }
 
                 ToolButton {

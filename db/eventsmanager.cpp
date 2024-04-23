@@ -86,3 +86,15 @@ Event *EventsManager::getLastEvent(bool cached)
     queryCtx.finish();
     return this->lastEvent;
 }
+
+void EventsManager::deleteEvents(int taskId)
+{
+    QSqlQuery queryCtx(*this->db);
+    QString deleteQuery = "DELETE FROM events WHERE task_id='%1'";
+
+    if (!queryCtx.exec(deleteQuery.arg(taskId))) {
+        qDebug() << queryCtx.lastError();
+        QGuiApplication::quit();
+    }
+    queryCtx.finish();
+}

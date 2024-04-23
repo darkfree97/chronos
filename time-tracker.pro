@@ -2,8 +2,8 @@ QT += quick sql widgets
 
 
 CONFIG += qmltypes
-QML_IMPORT_NAME = io.qt.examples.backend
-QML_IMPORT_MAJOR_VERSION = 1
+QML_IMPORT_NAME = io.chronos.backend
+QML_IMPORT_MAJOR_VERSION = 1.0
 
 SOURCES += \
         backend.cpp \

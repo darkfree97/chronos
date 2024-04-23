@@ -16,6 +16,7 @@ public:
 
     void createTask(Task &task);
     void updateTask(Task &task);
+    void deleteTask(int id);
     QList<Task *> retrieveTasks();
 private:
     QSqlDatabase *db;

@@ -13,8 +13,6 @@
 class Backend : public QObject
 {
     Q_OBJECT
-//    Q_PROPERTY(void stateChanged NOTIFY stateChanged)
-//    Q_PROPERTY(void tasksUpdated NOTIFY tasksUpdated)
     QML_ELEMENT
 public:
     explicit Backend(QObject *parent = nullptr);
@@ -28,6 +26,7 @@ public slots:
     void triggerTaskTimer(int taskId);
     void createTask(QString title, QString comments);
     void updateTask(int id, QString title, QString comments);
+    void deleteTask(int id);
     QList<Task *> loadTasks();
     Event* loadLastEvent();
 
