@@ -24,7 +24,7 @@ TasksManager::TasksManager(QSqlDatabase *db, QObject *parent) :  QObject{parent}
 void TasksManager::createTask(Task &task)
 {
     QSqlQuery queryCtx(*this->db);
-    QString insertQuery = "INSERT INTO tasks (title, comments, tracked_time) VALUES ('%1', '%2', '%3') RETURNING *;";
+    QString insertQuery = "INSERT INTO tasks (title, comments) VALUES ('%1', '%2') RETURNING *;";
 
     if (!queryCtx.exec(insertQuery.arg(task.getTitle(), task.getComments(), ""))) {
         qDebug() << queryCtx.lastError();
